@@ -593,7 +593,7 @@
         // If your Kubernetes DNS backend is configured with a low DNS cache value or publishes not
         // ready addresses
         // promptly, you can decrase this value or set it to 0.
-        delayStartSeconds?: int or 30
+        delayStartSeconds?: int >= 0 = 30
         // Image is the name of the RabbitMQ docker image to use for RabbitMQ nodes in the
         // RabbitmqCluster.
         // Must be provided together with ImagePullSecrets in order to use an image in a private
@@ -608,7 +608,7 @@
             // almost certainly wrong.
             // More info:
             // https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-            name?: string or ""
+            name?: string = ""
         }]
         override?: {
             service?: {
@@ -635,8 +635,8 @@
                         name?: string
                         nodePort?: int
                         port: int
-                        protocol?: string or "TCP"
-                        targetPort?: int or string
+                        protocol?: string = "TCP"
+                        targetPort?: int | string
                     }]
                     publishNotReadyAddresses?: bool
                     selector?: any
@@ -822,7 +822,7 @@
                                     valueFrom?: {
                                         configMapKeyRef?: {
                                             key: string
-                                            name?: string or ""
+                                            name?: string = ""
                                             optional?: bool
                                         }
                                         fieldRef?: {
@@ -831,30 +831,30 @@
                                         }
                                         fileKeyRef?: {
                                             key: string
-                                            optional?: bool or false
+                                            optional?: bool = false
                                             path: string
                                             volumeName: string
                                         }
                                         resourceFieldRef?: {
                                             containerName?: string
-                                            divisor?: int or string
+                                            divisor?: int | string
                                             resource: string
                                         }
                                         secretKeyRef?: {
                                             key: string
-                                            name?: string or ""
+                                            name?: string = ""
                                             optional?: bool
                                         }
                                     }
                                 }]
                                 envFrom?: [{
                                     configMapRef?: {
-                                        name?: string or ""
+                                        name?: string = ""
                                         optional?: bool
                                     }
                                     prefix?: string
                                     secretRef?: {
-                                        name?: string or ""
+                                        name?: string = ""
                                         optional?: bool
                                     }
                                 }]
@@ -872,7 +872,7 @@
                                                 value: string
                                             }]
                                             path?: string
-                                            port: int or string
+                                            port: int | string
                                             protocol?: string
                                             scheme?: string
                                         }
@@ -881,7 +881,7 @@
                                         }
                                         tcpSocket?: {
                                             host?: string
-                                            port: int or string
+                                            port: int | string
                                         }
                                     }
                                     preStop?: {
@@ -895,7 +895,7 @@
                                                 value: string
                                             }]
                                             path?: string
-                                            port: int or string
+                                            port: int | string
                                             protocol?: string
                                             scheme?: string
                                         }
@@ -904,7 +904,7 @@
                                         }
                                         tcpSocket?: {
                                             host?: string
-                                            port: int or string
+                                            port: int | string
                                         }
                                     }
                                     stopSignal?: string
@@ -917,7 +917,7 @@
                                     grpc?: {
                                         mode?: string
                                         port: int
-                                        service?: string or ""
+                                        service?: string = ""
                                     }
                                     httpGet?: {
                                         host?: string
@@ -926,7 +926,7 @@
                                             value: string
                                         }]
                                         path?: string
-                                        port: int or string
+                                        port: int | string
                                         protocol?: string
                                         scheme?: string
                                     }
@@ -935,7 +935,7 @@
                                     successThreshold?: int
                                     tcpSocket?: {
                                         host?: string
-                                        port: int or string
+                                        port: int | string
                                     }
                                     terminationGracePeriodSeconds?: int
                                     timeoutSeconds?: int
@@ -946,7 +946,7 @@
                                     hostIP?: string
                                     hostPort?: int
                                     name?: string
-                                    protocol?: string or "TCP"
+                                    protocol?: string = "TCP"
                                 }]
                                 readinessProbe?: {
                                     exec?: {
@@ -956,7 +956,7 @@
                                     grpc?: {
                                         mode?: string
                                         port: int
-                                        service?: string or ""
+                                        service?: string = ""
                                     }
                                     httpGet?: {
                                         host?: string
@@ -965,7 +965,7 @@
                                             value: string
                                         }]
                                         path?: string
-                                        port: int or string
+                                        port: int | string
                                         protocol?: string
                                         scheme?: string
                                     }
@@ -974,7 +974,7 @@
                                     successThreshold?: int
                                     tcpSocket?: {
                                         host?: string
-                                        port: int or string
+                                        port: int | string
                                     }
                                     terminationGracePeriodSeconds?: int
                                     timeoutSeconds?: int
@@ -1040,7 +1040,7 @@
                                     grpc?: {
                                         mode?: string
                                         port: int
-                                        service?: string or ""
+                                        service?: string = ""
                                     }
                                     httpGet?: {
                                         host?: string
@@ -1049,7 +1049,7 @@
                                             value: string
                                         }]
                                         path?: string
-                                        port: int or string
+                                        port: int | string
                                         protocol?: string
                                         scheme?: string
                                     }
@@ -1058,7 +1058,7 @@
                                     successThreshold?: int
                                     tcpSocket?: {
                                         host?: string
-                                        port: int or string
+                                        port: int | string
                                     }
                                     terminationGracePeriodSeconds?: int
                                     timeoutSeconds?: int
@@ -1103,7 +1103,7 @@
                                     valueFrom?: {
                                         configMapKeyRef?: {
                                             key: string
-                                            name?: string or ""
+                                            name?: string = ""
                                             optional?: bool
                                         }
                                         fieldRef?: {
@@ -1112,30 +1112,30 @@
                                         }
                                         fileKeyRef?: {
                                             key: string
-                                            optional?: bool or false
+                                            optional?: bool = false
                                             path: string
                                             volumeName: string
                                         }
                                         resourceFieldRef?: {
                                             containerName?: string
-                                            divisor?: int or string
+                                            divisor?: int | string
                                             resource: string
                                         }
                                         secretKeyRef?: {
                                             key: string
-                                            name?: string or ""
+                                            name?: string = ""
                                             optional?: bool
                                         }
                                     }
                                 }]
                                 envFrom?: [{
                                     configMapRef?: {
-                                        name?: string or ""
+                                        name?: string = ""
                                         optional?: bool
                                     }
                                     prefix?: string
                                     secretRef?: {
-                                        name?: string or ""
+                                        name?: string = ""
                                         optional?: bool
                                     }
                                 }]
@@ -1153,7 +1153,7 @@
                                                 value: string
                                             }]
                                             path?: string
-                                            port: int or string
+                                            port: int | string
                                             protocol?: string
                                             scheme?: string
                                         }
@@ -1162,7 +1162,7 @@
                                         }
                                         tcpSocket?: {
                                             host?: string
-                                            port: int or string
+                                            port: int | string
                                         }
                                     }
                                     preStop?: {
@@ -1176,7 +1176,7 @@
                                                 value: string
                                             }]
                                             path?: string
-                                            port: int or string
+                                            port: int | string
                                             protocol?: string
                                             scheme?: string
                                         }
@@ -1185,7 +1185,7 @@
                                         }
                                         tcpSocket?: {
                                             host?: string
-                                            port: int or string
+                                            port: int | string
                                         }
                                     }
                                     stopSignal?: string
@@ -1198,7 +1198,7 @@
                                     grpc?: {
                                         mode?: string
                                         port: int
-                                        service?: string or ""
+                                        service?: string = ""
                                     }
                                     httpGet?: {
                                         host?: string
@@ -1207,7 +1207,7 @@
                                             value: string
                                         }]
                                         path?: string
-                                        port: int or string
+                                        port: int | string
                                         protocol?: string
                                         scheme?: string
                                     }
@@ -1216,7 +1216,7 @@
                                     successThreshold?: int
                                     tcpSocket?: {
                                         host?: string
-                                        port: int or string
+                                        port: int | string
                                     }
                                     terminationGracePeriodSeconds?: int
                                     timeoutSeconds?: int
@@ -1227,7 +1227,7 @@
                                     hostIP?: string
                                     hostPort?: int
                                     name?: string
-                                    protocol?: string or "TCP"
+                                    protocol?: string = "TCP"
                                 }]
                                 readinessProbe?: {
                                     exec?: {
@@ -1237,7 +1237,7 @@
                                     grpc?: {
                                         mode?: string
                                         port: int
-                                        service?: string or ""
+                                        service?: string = ""
                                     }
                                     httpGet?: {
                                         host?: string
@@ -1246,7 +1246,7 @@
                                             value: string
                                         }]
                                         path?: string
-                                        port: int or string
+                                        port: int | string
                                         protocol?: string
                                         scheme?: string
                                     }
@@ -1255,7 +1255,7 @@
                                     successThreshold?: int
                                     tcpSocket?: {
                                         host?: string
-                                        port: int or string
+                                        port: int | string
                                     }
                                     terminationGracePeriodSeconds?: int
                                     timeoutSeconds?: int
@@ -1321,7 +1321,7 @@
                                     grpc?: {
                                         mode?: string
                                         port: int
-                                        service?: string or ""
+                                        service?: string = ""
                                     }
                                     httpGet?: {
                                         host?: string
@@ -1330,7 +1330,7 @@
                                             value: string
                                         }]
                                         path?: string
-                                        port: int or string
+                                        port: int | string
                                         protocol?: string
                                         scheme?: string
                                     }
@@ -1339,7 +1339,7 @@
                                     successThreshold?: int
                                     tcpSocket?: {
                                         host?: string
-                                        port: int or string
+                                        port: int | string
                                     }
                                     terminationGracePeriodSeconds?: int
                                     timeoutSeconds?: int
@@ -1381,7 +1381,7 @@
                             hostname?: string
                             hostnameOverride?: string
                             imagePullSecrets?: [{
-                                name?: string or ""
+                                name?: string = ""
                             }]
                             initContainers?: [{
                                 args?: [string]
@@ -1392,7 +1392,7 @@
                                     valueFrom?: {
                                         configMapKeyRef?: {
                                             key: string
-                                            name?: string or ""
+                                            name?: string = ""
                                             optional?: bool
                                         }
                                         fieldRef?: {
@@ -1401,30 +1401,30 @@
                                         }
                                         fileKeyRef?: {
                                             key: string
-                                            optional?: bool or false
+                                            optional?: bool = false
                                             path: string
                                             volumeName: string
                                         }
                                         resourceFieldRef?: {
                                             containerName?: string
-                                            divisor?: int or string
+                                            divisor?: int | string
                                             resource: string
                                         }
                                         secretKeyRef?: {
                                             key: string
-                                            name?: string or ""
+                                            name?: string = ""
                                             optional?: bool
                                         }
                                     }
                                 }]
                                 envFrom?: [{
                                     configMapRef?: {
-                                        name?: string or ""
+                                        name?: string = ""
                                         optional?: bool
                                     }
                                     prefix?: string
                                     secretRef?: {
-                                        name?: string or ""
+                                        name?: string = ""
                                         optional?: bool
                                     }
                                 }]
@@ -1442,7 +1442,7 @@
                                                 value: string
                                             }]
                                             path?: string
-                                            port: int or string
+                                            port: int | string
                                             protocol?: string
                                             scheme?: string
                                         }
@@ -1451,7 +1451,7 @@
                                         }
                                         tcpSocket?: {
                                             host?: string
-                                            port: int or string
+                                            port: int | string
                                         }
                                     }
                                     preStop?: {
@@ -1465,7 +1465,7 @@
                                                 value: string
                                             }]
                                             path?: string
-                                            port: int or string
+                                            port: int | string
                                             protocol?: string
                                             scheme?: string
                                         }
@@ -1474,7 +1474,7 @@
                                         }
                                         tcpSocket?: {
                                             host?: string
-                                            port: int or string
+                                            port: int | string
                                         }
                                     }
                                     stopSignal?: string
@@ -1487,7 +1487,7 @@
                                     grpc?: {
                                         mode?: string
                                         port: int
-                                        service?: string or ""
+                                        service?: string = ""
                                     }
                                     httpGet?: {
                                         host?: string
@@ -1496,7 +1496,7 @@
                                             value: string
                                         }]
                                         path?: string
-                                        port: int or string
+                                        port: int | string
                                         protocol?: string
                                         scheme?: string
                                     }
@@ -1505,7 +1505,7 @@
                                     successThreshold?: int
                                     tcpSocket?: {
                                         host?: string
-                                        port: int or string
+                                        port: int | string
                                     }
                                     terminationGracePeriodSeconds?: int
                                     timeoutSeconds?: int
@@ -1516,7 +1516,7 @@
                                     hostIP?: string
                                     hostPort?: int
                                     name?: string
-                                    protocol?: string or "TCP"
+                                    protocol?: string = "TCP"
                                 }]
                                 readinessProbe?: {
                                     exec?: {
@@ -1526,7 +1526,7 @@
                                     grpc?: {
                                         mode?: string
                                         port: int
-                                        service?: string or ""
+                                        service?: string = ""
                                     }
                                     httpGet?: {
                                         host?: string
@@ -1535,7 +1535,7 @@
                                             value: string
                                         }]
                                         path?: string
-                                        port: int or string
+                                        port: int | string
                                         protocol?: string
                                         scheme?: string
                                     }
@@ -1544,7 +1544,7 @@
                                     successThreshold?: int
                                     tcpSocket?: {
                                         host?: string
-                                        port: int or string
+                                        port: int | string
                                     }
                                     terminationGracePeriodSeconds?: int
                                     timeoutSeconds?: int
@@ -1610,7 +1610,7 @@
                                     grpc?: {
                                         mode?: string
                                         port: int
-                                        service?: string or ""
+                                        service?: string = ""
                                     }
                                     httpGet?: {
                                         host?: string
@@ -1619,7 +1619,7 @@
                                             value: string
                                         }]
                                         path?: string
-                                        port: int or string
+                                        port: int | string
                                         protocol?: string
                                         scheme?: string
                                     }
@@ -1628,7 +1628,7 @@
                                     successThreshold?: int
                                     tcpSocket?: {
                                         host?: string
-                                        port: int or string
+                                        port: int | string
                                     }
                                     terminationGracePeriodSeconds?: int
                                     timeoutSeconds?: int
@@ -1763,9 +1763,9 @@
                                     cachingMode?: string
                                     diskName: string
                                     diskURI: string
-                                    fsType?: string or "ext4"
+                                    fsType?: string = "ext4"
                                     kind?: string
-                                    readOnly?: bool or false
+                                    readOnly?: bool = false
                                 }
                                 azureFile?: {
                                     readOnly?: bool
@@ -1778,7 +1778,7 @@
                                     readOnly?: bool
                                     secretFile?: string
                                     secretRef?: {
-                                        name?: string or ""
+                                        name?: string = ""
                                     }
                                     user?: string
                                 }
@@ -1786,7 +1786,7 @@
                                     fsType?: string
                                     readOnly?: bool
                                     secretRef?: {
-                                        name?: string or ""
+                                        name?: string = ""
                                     }
                                     volumeID: string
                                 }
@@ -1799,14 +1799,14 @@
                                         path: string
                                         user?: int
                                     }]
-                                    name?: string or ""
+                                    name?: string = ""
                                     optional?: bool
                                 }
                                 csi?: {
                                     driver: string
                                     fsType?: string
                                     nodePublishSecretRef?: {
-                                        name?: string or ""
+                                        name?: string = ""
                                     }
                                     readOnly?: bool
                                     volumeAttributes?: any
@@ -1823,7 +1823,7 @@
                                         path: string
                                         resourceFieldRef?: {
                                             containerName?: string
-                                            divisor?: int or string
+                                            divisor?: int | string
                                             resource: string
                                         }
                                         user?: int
@@ -1832,7 +1832,7 @@
                                 emptyDir?: {
                                     medium?: string
                                     mode?: int
-                                    sizeLimit?: int or string
+                                    sizeLimit?: int | string
                                 }
                                 ephemeral?: {
                                     volumeClaimTemplate?: {
@@ -1882,7 +1882,7 @@
                                     options?: any
                                     readOnly?: bool
                                     secretRef?: {
-                                        name?: string or ""
+                                        name?: string = ""
                                     }
                                 }
                                 flocker?: {
@@ -1919,12 +1919,12 @@
                                     fsType?: string
                                     initiatorName?: string
                                     iqn: string
-                                    iscsiInterface?: string or "default"
+                                    iscsiInterface?: string = "default"
                                     lun: int
                                     portals?: [string]
                                     readOnly?: bool
                                     secretRef?: {
-                                        name?: string or ""
+                                        name?: string = ""
                                     }
                                     targetPortal: string
                                 }
@@ -1973,7 +1973,7 @@
                                                 path: string
                                                 user?: int
                                             }]
-                                            name?: string or ""
+                                            name?: string = ""
                                             optional?: bool
                                         }
                                         downwardAPI?: {
@@ -1986,7 +1986,7 @@
                                                 path: string
                                                 resourceFieldRef?: {
                                                     containerName?: string
-                                                    divisor?: int or string
+                                                    divisor?: int | string
                                                     resource: string
                                                 }
                                                 user?: int
@@ -2009,7 +2009,7 @@
                                                 path: string
                                                 user?: int
                                             }]
-                                            name?: string or ""
+                                            name?: string = ""
                                             optional?: bool
                                         }
                                         serviceAccountToken?: {
@@ -2031,25 +2031,25 @@
                                 rbd?: {
                                     fsType?: string
                                     image: string
-                                    keyring?: string or "/etc/ceph/keyring"
+                                    keyring?: string = "/etc/ceph/keyring"
                                     monitors: [string]
-                                    pool?: string or "rbd"
+                                    pool?: string = "rbd"
                                     readOnly?: bool
                                     secretRef?: {
-                                        name?: string or ""
+                                        name?: string = ""
                                     }
-                                    user?: string or "admin"
+                                    user?: string = "admin"
                                 }
                                 scaleIO?: {
-                                    fsType?: string or "xfs"
+                                    fsType?: string = "xfs"
                                     gateway: string
                                     protectionDomain?: string
                                     readOnly?: bool
                                     secretRef: {
-                                        name?: string or ""
+                                        name?: string = ""
                                     }
                                     sslEnabled?: bool
-                                    storageMode?: string or "ThinProvisioned"
+                                    storageMode?: string = "ThinProvisioned"
                                     storagePool?: string
                                     system: string
                                     volumeName?: string
@@ -2070,7 +2070,7 @@
                                     fsType?: string
                                     readOnly?: bool
                                     secretRef?: {
-                                        name?: string or ""
+                                        name?: string = ""
                                     }
                                     volumeName?: string
                                     volumeNamespace?: string
@@ -2086,7 +2086,7 @@
                     }
                     updateStrategy?: {
                         rollingUpdate?: {
-                            maxUnavailable?: int or string
+                            maxUnavailable?: int | string
                             partition?: int
                         }
                         type?: string
@@ -2147,13 +2147,13 @@
                 // The format of this field matches that defined by kubernetes/apimachinery.
                 // See https://pkg.go.dev/k8s.io/apimachinery/pkg/api/resource#Quantity for more info
                 // on the format of this field.
-                sizeLimit?: int or string
+                sizeLimit?: int | string
             }
             // The requested size of the persistent volume attached to each Pod in the RabbitmqCluster.
             // The format of this field matches that defined by kubernetes/apimachinery.
             // See https://pkg.go.dev/k8s.io/apimachinery/pkg/api/resource#Quantity for more info on
             // the format of this field.
-            storage?: int or string
+            storage?: int | string
             // The name of the StorageClass to claim a PersistentVolume from.
             storageClassName?: string
         }
@@ -2165,30 +2165,30 @@
             // rolling restart and will cause rabbitmq downtime.
             // For more information on this config, see
             // https://www.rabbitmq.com/configure.html#config-file
-            additionalConfig?: string
+            additionalConfig?: string len <= 100000
             // List of plugins to enable in addition to essential plugins: rabbitmq_management,
             // rabbitmq_prometheus, and rabbitmq_peer_discovery_k8s.
-            additionalPlugins?: [string]
+            additionalPlugins?: [string len <= 100 & =~ "^\\w+$"]
             // Specify any rabbitmq advanced.config configurations to apply to the cluster.
             // For more information on advanced config, see
             // https://www.rabbitmq.com/configure.html#advanced-config-file
-            advancedConfig?: string
+            advancedConfig?: string len <= 100000
             // Modify to add to the rabbitmq-env.conf file. Modifying this property on an existing
             // RabbitmqCluster will trigger a StatefulSet rolling restart and will cause rabbitmq
             // downtime.
             // For more information on env config, see
             // https://www.rabbitmq.com/man/rabbitmq-env.conf.5.html
-            envConfig?: string
+            envConfig?: string len <= 100000
             // Erlang Inet configuration to apply to the Erlang VM running rabbit.
             // See also: https://www.erlang.org/doc/apps/erts/inet_cfg.html
-            erlangInetConfig?: string
+            erlangInetConfig?: string len <= 2000
         }
         // Replicas is the number of nodes in the RabbitMQ cluster. Each node is deployed as a Replica
         // in a StatefulSet. Only 1, 3, 5 replicas clusters are tested.
         // This value should be an odd number to ensure the resultant cluster can establish exactly one
         // quorum of nodes
         // in the event of a fragmenting network partition.
-        replicas?: int or 1
+        replicas?: int >= 0 = 1
         // The desired compute resource requirements of Pods in the cluster.
         resources?: {
             // Claims lists the names of resources, defined in spec.resourceClaims,
@@ -2232,7 +2232,7 @@
                 // almost certainly wrong.
                 // More info:
                 // https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                name?: string or ""
+                name?: string = ""
             }
             // VaultSpec will add Vault annotations (see
             // https://www.vaultproject.io/docs/platform/k8s/injector/annotations)
@@ -2294,12 +2294,12 @@
             annotations?: any
             // IPFamilyPolicy represents the dual-stack-ness requested or required by a Service
             // See also: https://pkg.go.dev/k8s.io/api/core/v1#IPFamilyPolicy
-            ipFamilyPolicy?: "SingleStack" or "PreferDualStack" or "RequireDualStack"
+            ipFamilyPolicy?: "SingleStack" | "PreferDualStack" | "RequireDualStack"
             labels?: any
             // Type of Service to create for the cluster. Must be one of: ClusterIP, LoadBalancer,
             // NodePort.
             // For more info see https://pkg.go.dev/k8s.io/api/core/v1#ServiceType
-            type?: "ClusterIP" or "LoadBalancer" or "NodePort" or "ClusterIP"
+            type?: "ClusterIP" | "LoadBalancer" | "NodePort" = "ClusterIP"
         }
         // If unset, or set to false, the cluster will run `rabbitmq-queues rebalance all` whenever the
         // cluster is updated.
@@ -2313,7 +2313,7 @@
         // hook can finish running.
         // For more information, see:
         // https://github.com/rabbitmq/cluster-operator/blob/main/docs/design/20200520-graceful-pod-termination.md
-        terminationGracePeriodSeconds?: int or 604800
+        terminationGracePeriodSeconds?: int >= 0 = 604800
         // TLS-related configuration for the RabbitMQ cluster.
         tls?: {
             // Name of a Secret in the same Namespace as the RabbitmqCluster, containing the
@@ -2332,17 +2332,17 @@
             // Requires cert-manager and the cert-manager-csi-driver to be installed in the cluster.
             interNode?: {
                 // Enables inter-node mTLS using the cert-manager CSI driver.
-                enabled?: bool or false
+                enabled?: bool = false
                 // Reference to the cert-manager Issuer or ClusterIssuer that issues the inter-node
                 // mTLS certificates.
                 // Must be a CA-type issuer.
                 issuerRef: {
                     // Group of the issuer resource.
-                    group?: string or "cert-manager.io"
+                    group?: string len >= 1 & len <= 253 = "cert-manager.io"
                     // Kind of the issuer resource: Issuer or ClusterIssuer.
-                    kind?: "Issuer" or "ClusterIssuer" or "Issuer"
+                    kind?: "Issuer" | "ClusterIssuer" = "Issuer"
                     // Name of the cert-manager Issuer or ClusterIssuer.
-                    name: string
+                    name: string len >= 1 & len <= 253
                 }
             }
             // Name of a Secret in the same Namespace as the RabbitmqCluster, containing the server's
@@ -2390,7 +2390,7 @@
             // almost certainly wrong.
             // More info:
             // https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-            name?: string or ""
+            name?: string = ""
         }
         // Set of Conditions describing the current state of the RabbitmqCluster
         conditions: [{
